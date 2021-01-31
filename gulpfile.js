@@ -16,7 +16,7 @@ function lazy_sass_task(){
         .src( ['./sass/*.scss','./sass/**/*.scss'] )
         .pipe( sass().on('error', sass.logError) )
         .pipe( gulp.dest('./css/') )
-        .pipe( browserSync.stream() )
+        // .pipe( browserSync.stream() )
     );
 
 }
@@ -24,12 +24,11 @@ function lazy_sass_task(){
 function lazy_js_task(){
 
     return (
-        gulp.task('js', function () {
-            return gulp.src('./js/*js')
-                // .pipe( browserify() )
-                // .pipe( uglify() )
-                .pipe(gulp.dest('./js/dist'));
-        })
+        gulp
+        .src( [ './js/*js' ] )
+        // .pipe( browserify() )
+        // .pipe( uglify() )
+        .pipe( gulp.dest('./js/dist') )
     );
 }
 
@@ -41,12 +40,14 @@ function lazy_js_reload(){
 
 function lazy_launch(){
     
+    /*
     browserSync.init({
       proxy: "https://mamp-sites.dev/lazy/",
       // ghostMode: false,
       // open: false,
       // notify: false
     })
+    */
 
     // sass
     gulp.watch("./sass/*.scss", lazy_sass_task );
@@ -54,8 +55,8 @@ function lazy_launch(){
     gulp.watch("./sass/**/**/*.scss", lazy_sass_task );
     
     // js
-    // gulp.watch("./js/*.js", lazy_js_task );
-    gulp.watch("./js/*.js", lazy_js_reload );
+    gulp.watch("./js/*.js", lazy_js_task );
+    // gulp.watch("./js/*.js", lazy_js_reload );
 
     // php
     // gulp.watch("./*.php"   ).on('change', browserSync.reload);

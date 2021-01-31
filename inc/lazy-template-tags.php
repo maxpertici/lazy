@@ -93,10 +93,12 @@ if ( ! function_exists( 'lazy_entry_footer' ) ) :
 			echo '</span>';
 		}
 
+		/*
+
 		edit_post_link(
 			sprintf(
 				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
+					// translators: %s: Name of current post. Only visible to screen readers 
 					__( 'Edit <span class="screen-reader-text">%s</span>', 'lazy' ),
 					array(
 						'span' => array(
@@ -109,6 +111,8 @@ if ( ! function_exists( 'lazy_entry_footer' ) ) :
 			'<span class="edit-link">',
 			'</span>'
 		);
+		
+		*/
 	}
 endif;
 

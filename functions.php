@@ -7,9 +7,10 @@
  * @package LAZY
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if ( ! defined( 'LAZY_VERSION' ) ) {
+
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( 'LAZY_VERSION', '1.0.0' );
 }
 
 if ( ! function_exists( 'lazy_setup' ) ) :
@@ -50,7 +51,9 @@ if ( ! function_exists( 'lazy_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'lazy' ),
+				'primary-menu' => esc_html__( 'Primary', 'lazy' ),
+				'top-menu' => esc_html__( 'Top', 'lazy' ),
+				'footer-menu' => esc_html__( 'Footer', 'lazy' ),
 			)
 		);
 
@@ -71,35 +74,9 @@ if ( ! function_exists( 'lazy_setup' ) ) :
 			)
 		);
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'lazy_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
-
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
-		/**
-		 * Add support for core custom logo.
-		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
-		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
 	}
 endif;
 add_action( 'after_setup_theme', 'lazy_setup' );
@@ -125,12 +102,12 @@ function lazy_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'lazy' ),
-			'id'            => 'sidebar-1',
+			'id'            => 'lazy-sidebar',
 			'description'   => esc_html__( 'Add widgets here.', 'lazy' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'before_title'  => '<span class="h2-like" class="widget-title">',
+			'after_title'   => '</span>',
 		)
 	);
 }
@@ -140,31 +117,29 @@ add_action( 'widgets_init', 'lazy_widgets_init' );
  * Enqueue scripts and styles.
  */
 function lazy_scripts() {
-	wp_enqueue_style( 'lazy-style', get_stylesheet_directory_uri() . '/css/lazy.css', array(), _S_VERSION );
-
+	
+	wp_enqueue_style( 'lazy-style', get_template_directory_uri() . '/css/lazy.css', array(), LAZY_VERSION );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-}
-add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
+	wp_enqueue_script( 'lazy-script', get_template_directory_uri() . '/js/dist/lazy.js', array( 'jquery' ), LAZY_VERSION, true );
+}
+
+add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/lazy-template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/lazy-template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/lazy-customizer.php';
