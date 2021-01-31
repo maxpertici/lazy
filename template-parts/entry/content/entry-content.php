@@ -14,12 +14,12 @@
 		/**
 		 * Header
 		 */
-		get_template_part( 'template-parts/entry/header/entry-header', get_post_type() );
+		// get_template_part( 'template-parts/entry/header/entry-header', get_post_type() );
 
 		/**
 		 * Post thumbnail
 		 */
-		get_template_part( 'template-parts/entry/post-thumbnail/entry-post-thumbnail', get_post_type() );
+		// get_template_part( 'template-parts/entry/post-thumbnail/entry-post-thumbnail', get_post_type() );
 		
 	?>
 	<div class="entry-content">

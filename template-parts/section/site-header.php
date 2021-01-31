@@ -1,4 +1,4 @@
-<header id="masthead" class="site-header"><!-- site-header--fixed ? -->
+<header id="masthead" class="site-header site-header--fixed"><!-- site-header--fixed ? -->
 
     <div class="site-branding">
         <?php
