@@ -10,7 +10,7 @@
 if ( ! defined( 'LAZY_VERSION' ) ) {
 
 	// Replace the version number of the theme on each release.
-	define( 'LAZY_VERSION', '1.0.0' );
+	define( 'LAZY_VERSION', '1.0' );
 }
 
 if ( ! function_exists( 'lazy_setup' ) ) :
@@ -77,9 +77,22 @@ if ( ! function_exists( 'lazy_setup' ) ) :
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
+		// Gutenberg
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'align-full' );
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'responsive-embeds' );
+
+		if ( ! isset( $content_width ) ) {
+			$content_width = 1160;
+		}
+
 	}
 endif;
+
 add_action( 'after_setup_theme', 'lazy_setup' );
+
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -92,6 +105,8 @@ function lazy_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'lazy_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'lazy_content_width', 0 );
+
+
 
 /**
  * Register widget area.
@@ -113,6 +128,8 @@ function lazy_widgets_init() {
 }
 add_action( 'widgets_init', 'lazy_widgets_init' );
 
+
+
 /**
  * Enqueue scripts and styles.
  */
@@ -129,17 +146,70 @@ function lazy_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
 
+
+
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/lazy-template-tags.php';
+require get_template_directory() . '/core/lazy-template-tags.php';
+
+
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/lazy-template-functions.php';
+require get_template_directory() . '/core/lazy-template-functions.php';
+
+
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/lazy-customizer.php';
+require get_template_directory() . '/core/lazy-customizer.php';
+
+
+
+/**
+ * Gutenberg Editor Styles
+ */
+function lazy_block_editor_styles() {
+    
+	wp_enqueue_style( 'editor-css', get_template_directory_uri() . '/css/editor.css', array(), false );
+}
+
+add_action( 'enqueue_block_editor_assets', 'lazy_block_editor_styles' );
+
+
+
+
+
+/**
+ * ()
+ * 
+ * 
+ */
+function lazy_get_template_state( $state ) {
+	return $state;
+}
+
+add_filter( 'lazy_state_entry_header',         'lazy_get_template_state' );
+add_filter( 'lazy_state_entry_post_thumbnail', 'lazy_get_template_state' );
+add_filter( 'lazy_state_site_description',     'lazy_get_template_state' );
+
+
+
+
+/**
+ * 
+ * 
+ * 
+ * 
+ */
+
+ function lazy_get_template_context(){
+
+	$context = get_post_type();
+
+	return $context ;
+
+ }

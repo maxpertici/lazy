@@ -1,9 +1,29 @@
+.site-header__top-bar-navigation .menu a{
+	font-size: 14px;
+}
+
+.site-header__top-bar-navigation,
+.site-header__main-navigation{
+	
+	.menu a{
+		display: inline-block;
+		padding: 10px;
+
+		text-decoration: none;
+
+		&:hover, &:focus, &:active{
+			background-color: #eee;
+		}
+	}
+}
+
+/*
 .main-navigation {
 	display: block;
 	width: 100%;
 }
 
-/*
+
 
 .main-navigation {
 	display: block;
@@ -119,4 +139,13 @@
 		text-align: end;
 		flex: 1 0 50%;
 	}
+}
+
+
+ul.menu,ol.menu{
+
+	padding-left: 0;
+	margin: 0 auto;
+	list-style: none;
+	display: flex;
 }

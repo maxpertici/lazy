@@ -5,6 +5,8 @@
  * @package LAZY
  */
 
+
+
 /**
  * Adds custom classes to the array of body classes.
  *
@@ -25,6 +27,8 @@ function lazy_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'lazy_body_classes' );
+
+
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.

@@ -2,10 +2,12 @@
 	display: block;
 }
 
+/*
 .post,
 .page {
-	margin: 0 0 1.5em;
+	margin: 0 0 20px;
 }
+*/
 
 .updated:not(.published) {
 	display: none;
@@ -21,5 +23,5 @@
 
 .page-links {
 	clear: both;
-	margin: 0 0 1.5em;
+	margin: 0 0 20px;
 }
