@@ -41,13 +41,13 @@ if( $sidebar_state != false ){ $sidebar_state .= ' post--has-sidebar '; }
 		
 	?>
 	<div class="entry-content">
-	<?php
+		<?php
 
 		if( is_home() || is_archive() || is_search()  ){
 
 			$excerpt = get_the_excerpt();
 			$excerpt = substr($excerpt, 0, 260);
-			$result = substr($excerpt, 0, strrpos($excerpt, ' '));
+			$result  = substr($excerpt, 0, strrpos($excerpt, ' '));
 			echo '<p>' . $result . '</p>';
 
 		}else{
@@ -76,9 +76,6 @@ if( $sidebar_state != false ){ $sidebar_state .= ' post--has-sidebar '; }
 		);
 		
 		?>
-		<footer class="entry-footer">
-			<?php lazy_entry_footer(); ?>
-		</footer><!-- .entry-footer -->
 	</div><!-- .entry-content -->
 	<?php
 

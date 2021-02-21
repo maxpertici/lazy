@@ -54,11 +54,18 @@ big {
 }
 
 
-.entry-content{
+.entry-content,
+.widget-area{
 
 	p{
 		max-width: 580px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
+
+.singular .entry-content,
+.singular .widget-area{
+
+	> p:first-child{ margin-top: 0; }
 }
