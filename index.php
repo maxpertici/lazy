@@ -12,14 +12,10 @@
  * @package LAZY
  */
 
-get_header();
+echo lazy_theme_part( 'template-parts/section/header/header' );
 
-if( is_404() ){
-    get_template_part( 'template-parts/section/main/main', '404' );
-}else{
-    get_template_part( 'template-parts/section/main/main', '' );
-}
+echo lazy_theme_part( 'template-parts/section/main/main' );
 
-get_template_part( 'template-parts/section/header/site-header', '' );
+echo lazy_theme_part( 'template-parts/section/header/site-header' );
 
-get_footer();
+echo lazy_theme_part( 'template-parts/section/footer/footer' );

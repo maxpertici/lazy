@@ -1,15 +1,17 @@
 <main id="primary" class="site-main mw1160p center">
-	<?php
-	
-	if ( have_posts() ) :
+<?php
 
-		get_template_part( 'template-parts/component/title/page', 'title' );
-		get_template_part( 'template-parts/component/post-list/loop', '' );
 
-	else :
-		get_template_part( 'template-parts/entry/content/entry-content', 'none' );
 
-	endif;
-	
-	?>
+if( is_404() ){
+    echo lazy_theme_part( 'template-parts/section/main/main-error' );
+
+}else{
+
+    echo lazy_theme_part( 'template-parts/section/main/main-content' );
+    
+}
+
+?>
 </main><!-- #main -->
+

@@ -10,34 +10,32 @@
 
 $sidebar_context =  get_post_type() ;
 if( $sidebar_context !=  'post' ){ $sidebar_context = false ; }
-$sidebar_state = apply_filters( 'lazy_state_entry_sidebar', $sidebar_context );
+
+// $sidebar_state = apply_filters( 'lazy_state_entry_sidebar', $sidebar_context );
 
 if( is_archive() || is_search() || is_home() ){
-	$sidebar_state = false ;
+	$sidebar_context = false ;
 }
 
+$sidebar = lazy_theme_part( 'template-parts/component/sidebar/sidebar', null, null, $sidebar_context ); 
+
 $has_sidebar_class = '';
-if( $sidebar_state != false ){ $sidebar_state .= ' post--has-sidebar '; }
+if( $sidebar != false ){ $has_sidebar_class .= ' post--has-sidebar ';  }
+
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class( $sidebar_state ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $has_sidebar_class ); ?>>
 	<?php
 	
 		/**
 		 * Header
 		 */
-		$state = apply_filters( 'lazy_state_entry_header', get_post_type() );
-		if( false !==  $state ){
-			get_template_part( 'template-parts/entry/header/entry-header', $state );
-		}
-
+		echo lazy_theme_part( 'template-parts/entry/header/entry-header' );
+		
 		/**
 		 * Post thumbnail
 		 */
-		$state = apply_filters( 'lazy_state_entry_post_thumbnail', get_post_type() );
-		if( false !==  $state ){
-			get_template_part( 'template-parts/entry/post-thumbnail/entry-post-thumbnail', $state );
-		}
+		echo lazy_theme_part( 'template-parts/entry/post-thumbnail/entry-post-thumbnail' );
 		
 	?>
 	<div class="entry-content">
@@ -79,10 +77,7 @@ if( $sidebar_state != false ){ $sidebar_state .= ' post--has-sidebar '; }
 	</div><!-- .entry-content -->
 	<?php
 
-	if( false !==  $sidebar_state ){
-		get_template_part( 'template-parts/component/sidebar/sidebar', $sidebar_state ); 
-	}
+	echo $sidebar ;
 
 	?>
-	
 </article><!-- #post-<?php the_ID(); ?> -->

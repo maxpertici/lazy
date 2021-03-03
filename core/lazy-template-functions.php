@@ -71,3 +71,77 @@ function lazy_archive_title( $title ) {
 }
  
 add_filter( 'get_the_archive_title', 'lazy_archive_title' );
+
+
+
+
+
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+function lazy_theme_part( $part  = null, $slug = null , $args = null , $context = null ){
+
+    // site title
+    if( is_null( $part)     ){ $part    = '';      }
+    if( is_null( $slug )    ){ $slug    = '';      }
+    if( is_null( $args )    ){ $args    = array(); }
+    if( is_null( $context ) ){ $context = '';      }
+    
+    $match =  $part . '-' . $slug ;
+
+    // $part
+    if( $part  !=  '' ){ $part = apply_filters( "lazy_theme_part_{$part}_part", $part );  }
+    if( $slug  !=  '' ){ $part = apply_filters( "lazy_theme_part_{$slug}_part", $part );  }
+    if( $match != '-' ){ $part = apply_filters( "lazy_theme_part_{$match}_part", $part ); }
+    
+    // $slug
+    if( $part  !=  '' ){ $slug = apply_filters( "lazy_theme_part_{$part}_slug", $slug );  }
+    if( $slug  !=  '' ){ $slug = apply_filters( "lazy_theme_part_{$slug}_slug", $slug );  }
+    if( $match != '-' ){ $slug = apply_filters( "lazy_theme_part_{$match}_slug", $slug ); }
+
+    // $args filter
+    if( $part  !=  '' ){ $args = apply_filters( "lazy_theme_part_{$part}_args", $args );  }
+    if( $slug  !=  '' ){ $args = apply_filters( "lazy_theme_part_{$slug}_args", $args );  }
+    if( $match != '-' ){ $args = apply_filters( "lazy_theme_part_{$match}_args", $args ); }
+
+    // $context filters
+    if( $part  !=  '' ){ $context = apply_filters( "lazy_theme_part_{$part}_context", $context );  }
+    if( $slug  !=  '' ){ $context = apply_filters( "lazy_theme_part_{$slug}_context", $context );  }
+    if( $match != '-' ){ $context = apply_filters( "lazy_theme_part_{$match}_context", $context ); }
+    
+    ob_start();
+    
+    // action
+    if( $part  !=  '' ){ do_action( "lazy_theme_part_{$part}_before" );  }
+    if( $slug  !=  '' ){ do_action( "lazy_theme_part_{$slug}_before" );  }
+    if( $match != '-' ){ do_action( "lazy_theme_part_{$match}_before" ); }
+
+    // get_template_part
+    if( isset( $context ) && ( $context !== false )  ){
+
+        if( $context != '' ){
+            get_template_part( $part, $slug . '-' . $context ,  $args );
+
+        }else{
+            get_template_part( $part, $slug, $args );
+        }
+
+    }
+
+    // action
+    if( $part  !=  '' ){ do_action( "lazy_theme_part_{$part}_after" );  }
+    if( $slug  !=  '' ){ do_action( "lazy_theme_part_{$slug}_after" );  }
+    if( $match != '-' ){ do_action( "lazy_theme_part_{$match}_after" ); }
+
+    $return =  ob_get_clean();
+
+    if( $return == '' ){ return false ; }
+
+    return $return ;
+}
