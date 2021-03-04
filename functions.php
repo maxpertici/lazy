@@ -135,13 +135,13 @@ add_action( 'widgets_init', 'lazy_widgets_init' );
  */
 function lazy_scripts() {
 	
-	wp_enqueue_style( 'lazy-style', get_template_directory_uri() . '/css/lazy.css', array(), LAZY_VERSION );
+	wp_enqueue_style( 'lazy-style', get_template_directory_uri() . '/assets/dist/css/lazy.css', array(), LAZY_VERSION );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	wp_enqueue_script( 'lazy-script', get_template_directory_uri() . '/js/dist/lazy.js', array( 'jquery' ), LAZY_VERSION, true );
+	wp_enqueue_script( 'lazy-script', get_template_directory_uri() . '/assets/dist/js/lazy.js', array( 'jquery' ), LAZY_VERSION, true );
 }
 
 add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
@@ -151,21 +151,21 @@ add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/core/lazy-template-tags.php';
+require get_template_directory() . '/inc/functions/tags.php';
 
 
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/core/lazy-template-functions.php';
+require get_template_directory() . '/inc/functions/template.php';
 
 
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/core/lazy-customizer.php';
+require get_template_directory() . '/inc/functions/customizer.php';
 
 
 

@@ -9,7 +9,6 @@
  * @package LAZY
  */
 
-
 	?>
 	<footer id="colophon" class="site-footer">
 		<?php echo lazy_theme_part( 'template-parts/component/navigation/footer-navigation' ); ?>

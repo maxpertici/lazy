@@ -4,11 +4,11 @@
 
 
 if( is_404() ){
-    echo lazy_theme_part( 'template-parts/section/main/main-error' );
+    echo lazy_theme_part( 'template-parts/section/main/main', 'error' );
 
 }else{
 
-    echo lazy_theme_part( 'template-parts/section/main/main-content' );
+    echo lazy_theme_part( 'template-parts/section/main/main', 'content' );
     
 }
 

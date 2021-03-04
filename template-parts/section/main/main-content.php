@@ -15,6 +15,6 @@ if ( have_posts() ) :
     
 else :
 
-    echo lazy_theme_part( 'template-parts/entry/content/entry-content-none' );
+    echo lazy_theme_part( 'template-parts/entry/content/entry-content', 'none' );
 
 endif;

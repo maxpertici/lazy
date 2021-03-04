@@ -15,7 +15,7 @@ function lazy_sass_task(){
         gulp
         .src( ['./sass/*.scss','./sass/**/*.scss'] )
         .pipe( sass().on('error', sass.logError) )
-        .pipe( gulp.dest('./css/') )
+        .pipe( gulp.dest('../assets/dist/css/') )
         // .pipe( browserSync.stream() )
     );
 
@@ -28,7 +28,7 @@ function lazy_js_task(){
         .src( [ './js/*js' ] )
         // .pipe( browserify() )
         // .pipe( uglify() )
-        .pipe( gulp.dest('./js/dist') )
+        .pipe( gulp.dest('../assets/dist/js') )
     );
 }
 
