@@ -99,14 +99,18 @@ if( ! function_exists('lazy_theme_part') ){
 
     function lazy_theme_part( $part  = null, $slug = null , $args = null , $context = null ){
 
-        // site title
-        if( is_null( $part)     ){ $part    = '';      }
+        if( is_null( $part) ){ $part = ''; }
+        if( isset( $part ) && $part != '' ){
+            $part = apply_filters( "lazy_theme_part_{$part}_template", $part );
+        }
+
         if( is_null( $slug )    ){ $slug    = '';      }
         if( is_null( $args )    ){ $args    = array(); }
         if( is_null( $context ) ){ $context = '';      }
         
         $match =  $part . '-' . $slug ;
 
+        
         // $part
         if( $part  !=  '' ){ $part = apply_filters( "lazy_theme_part_{$part}_part", $part );  }
         if( $slug  !=  '' ){ $part = apply_filters( "lazy_theme_part_{$slug}_part", $part );  }

@@ -48,6 +48,16 @@ if( $sidebar != false ){ $has_sidebar_class .= ' post--has-sidebar ';  }
 			$result  = substr($excerpt, 0, strrpos($excerpt, ' '));
 			echo '<p>' . $result . '</p>';
 
+			?>			
+			<div class="wp-block-buttons paragraph-like">
+				<div class="wp-block-button">
+				<?php echo '<a class="wp-block-button__link read-more-link" href="'.get_permalink().'">' . __( 'Read more', 'lazy' ) . '</a>'; ?>
+				</div>
+			</div>
+			<?php
+			
+
+
 		}else{
 
 			the_content(
@@ -64,15 +74,16 @@ if( $sidebar != false ){ $has_sidebar_class .= ' post--has-sidebar ';  }
 					wp_kses_post( get_the_title() )
 				)
 			);
+		
+			wp_link_pages(
+				array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'lazy' ),
+					'after'  => '</div>',
+				)
+			);
+			
 		}
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'lazy' ),
-				'after'  => '</div>',
-			)
-		);
-		
 		?>
 	</div><!-- .entry-content -->
 	<?php

@@ -1,0 +1,8 @@
+.site-header__top-bar-content__text {
+  padding: 10px;
+  font-size: 14px; }
+
+.site-header__top-bar-content a {
+  text-decoration: none; }
+  .site-header__top-bar-content a:hover, .site-header__top-bar-content a:focus, .site-header__top-bar-content a:active {
+    text-decoration: underline; }

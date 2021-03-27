@@ -1,0 +1,16 @@
+
+.site-header__top-bar-content{
+    
+    &__text{
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    a{
+        text-decoration: none;
+
+        &:hover, &:focus, &:active{
+            text-decoration: underline;
+        }
+    }
+}

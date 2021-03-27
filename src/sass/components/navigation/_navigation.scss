@@ -8,16 +8,55 @@
 	.menu a{
 		display: inline-block;
 		padding: 10px;
+	}
 
-		text-decoration: none;
+	li{ position: relative; }
+}
 
-		&:hover, &:focus, &:active{
-			background-color: #eee;
-		}
+
+.site-header__main-navigation{
+
+	.sub-menu{
+		position: absolute;
+		overflow: hidden;
+		min-width: 100%;
+
+		opacity: 0;
+		max-height: 0;
+
+		background-color: #fff;
+		padding-left: 0;
+		margin-left: 0;
+
+		list-style: none;
+
+		text-align: left;
+		
+		a{ width: 100%; }
+	}
+
+	li:hover > .sub-menu{
+		opacity: 1;
+		max-height: 50vh;
+	}
+
+}
+
+
+.footer-navigation{
+	
+	a{
+		display: inline-block;
+		padding: 10px;
+
 	}
 }
 
+
+
+
 /*
+
 .main-navigation {
 	display: block;
 	width: 100%;

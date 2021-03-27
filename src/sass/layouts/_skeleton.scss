@@ -16,14 +16,11 @@
 
 .site-header{
     order: 10;
-    border-bottom: 1px solid #eee;
     background-color: #fff;
 
     position: sticky;
     top: 0;
     z-index: 10;
-
-    box-shadow: 0 0 14px #00000029;
     
     body.admin-bar & {
         top: 46px;
@@ -62,7 +59,11 @@
 
 .site-header__main-bar{
     display: flex;
+    
+    /*
     align-items: center;
+    */
+    align-items: end;
 
     justify-content: space-between;
 
@@ -76,8 +77,21 @@
 }
 
 
+
+.site-header__branding{
+    padding: 10px;
+}
+
 .site-main{
     order: 30;
+}
+
+
+.entry-header{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items : center;
 }
 
 .page-title-header{
@@ -100,9 +114,17 @@ h1.page-title{
     text-align: center;
 }
 
+.post:last-of-type{
+    margin-bottom: 6em;
+}
+
+.post:last-of-type:first-of-type{
+    margin-bottom: 0;
+}
+
+
 .post + .post{
     margin-top: 6em;
-
     &:before{
         content: '';
         display: block;
@@ -113,7 +135,7 @@ h1.page-title{
         max-width: 200px;
         height: 2px;
         background-color: #eee;
-        margin-top: -2em;
+        margin-top: -3em;
     }
 }
 
@@ -142,7 +164,11 @@ h1.page-title{
 
 .post-thumbnail{
     width: 100%;
-    margin: 20px auto;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    img{
+        display: block;
+    }
 }
 .entry-footer{
     max-width: 580px;
@@ -155,8 +181,8 @@ h1.page-title{
     /* margin-top: 6em; */
     
     order: 50;
-    padding: 20px;
-    background-color: #eee;
+    /* padding: 20px; */
+    /* background-color: #eee; */
 }
 
 .footer-navigation__menu{

@@ -24,6 +24,9 @@ if ( ! function_exists( 'lazy_setup' ) ) {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 
+		// image size
+		add_image_size( 'post-thumbnail', 1160, 580, true );
+
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -139,7 +142,8 @@ add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
 /**
  * Inc functions
  */
-require get_template_directory() . '/inc/functions/tags.php';
+require get_template_directory() . '/inc/functions/remove/emoji.php';
+ require get_template_directory() . '/inc/functions/tags.php';
 require get_template_directory() . '/inc/functions/template.php';
 require get_template_directory() . '/inc/functions/customizer.php';
 
@@ -152,7 +156,7 @@ if ( ! function_exists( 'lazy_block_editor_styles' ) ) {
 
 	function lazy_block_editor_styles() {
 		
-		wp_enqueue_style( 'editor-css', get_template_directory_uri() . '/css/editor.css', array(), false );
+		wp_enqueue_style( 'editor-css', get_template_directory_uri() . '/assets/dist/css/editor.css', array(), false );
 	}
 }
 
