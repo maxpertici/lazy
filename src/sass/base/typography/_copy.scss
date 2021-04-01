@@ -57,11 +57,26 @@ big {
 .entry-content,
 .widget-area{
 
-	p, .paragraph-like{
+	p, .paragraph-like,
+	p.has-text-align-left,
+	.paragraph-like.has-text-align-left{
 		max-width: 580px;
+		margin-left: 0;
+		margin-right: auto;
+	}
+
+	p.has-text-align-center,
+	.paragraph-like.has-text-align-center{
 		margin-left: auto;
 		margin-right: auto;
 	}
+
+	p.has-text-align-right,
+	.paragraph-like.has-text-align-right{
+		margin-left: auto;
+		margin-right: 0;
+	}
+
 }
 
 .singular .entry-content,

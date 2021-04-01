@@ -297,7 +297,7 @@ input,
 select,
 optgroup,
 textarea {
-  color: #404040;
+  color: #202020;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   /* font-size: 1rem; */
   font-size: 1.125rem;
@@ -363,11 +363,29 @@ big {
   font-size: 125%; }
 
 .entry-content p, .entry-content .paragraph-like,
+.entry-content p.has-text-align-left,
+.entry-content .paragraph-like.has-text-align-left,
 .widget-area p,
-.widget-area .paragraph-like {
+.widget-area .paragraph-like,
+.widget-area p.has-text-align-left,
+.widget-area .paragraph-like.has-text-align-left {
   max-width: 580px;
+  margin-left: 0;
+  margin-right: auto; }
+
+.entry-content p.has-text-align-center,
+.entry-content .paragraph-like.has-text-align-center,
+.widget-area p.has-text-align-center,
+.widget-area .paragraph-like.has-text-align-center {
   margin-left: auto;
   margin-right: auto; }
+
+.entry-content p.has-text-align-right,
+.entry-content .paragraph-like.has-text-align-right,
+.widget-area p.has-text-align-right,
+.widget-area .paragraph-like.has-text-align-right {
+  margin-left: auto;
+  margin-right: 0; }
 
 .singular .entry-content > p:first-child,
 .singular .widget-area > p:first-child {

@@ -143,7 +143,7 @@ add_action( 'wp_enqueue_scripts', 'lazy_scripts' );
  * Inc functions
  */
 require get_template_directory() . '/inc/functions/remove/emoji.php';
- require get_template_directory() . '/inc/functions/tags.php';
+require get_template_directory() . '/inc/functions/tags.php';
 require get_template_directory() . '/inc/functions/template.php';
 require get_template_directory() . '/inc/functions/customizer.php';
 
