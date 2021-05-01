@@ -362,30 +362,42 @@ ins {
 big {
   font-size: 125%; }
 
-.entry-content p, .entry-content .paragraph-like,
-.entry-content p.has-text-align-left,
-.entry-content .paragraph-like.has-text-align-left,
-.widget-area p,
-.widget-area .paragraph-like,
-.widget-area p.has-text-align-left,
-.widget-area .paragraph-like.has-text-align-left {
-  max-width: 580px;
-  margin-left: 0;
-  margin-right: auto; }
-
-.entry-content p.has-text-align-center,
-.entry-content .paragraph-like.has-text-align-center,
-.widget-area p.has-text-align-center,
-.widget-area .paragraph-like.has-text-align-center {
-  margin-left: auto;
-  margin-right: auto; }
-
-.entry-content p.has-text-align-right,
-.entry-content .paragraph-like.has-text-align-right,
-.widget-area p.has-text-align-right,
-.widget-area .paragraph-like.has-text-align-right {
-  margin-left: auto;
-  margin-right: 0; }
+.entry-content,
+.widget-area {
+  /*
+	p, .paragraph-like,
+	ul:not([class]), ol:not([class]){
+		max-width: 580px;
+	}
+	*/ }
+  .entry-content p.has-text-align-left,
+  .entry-content .paragraph-like.has-text-align-left,
+  .entry-content ul.has-text-align-left,
+  .entry-content ol.has-text-align-left,
+  .widget-area p.has-text-align-left,
+  .widget-area .paragraph-like.has-text-align-left,
+  .widget-area ul.has-text-align-left,
+  .widget-area ol.has-text-align-left {
+    margin-left: 0;
+    margin-right: auto; }
+  .entry-content p, .entry-content .paragraph-like,
+  .entry-content ul, .entry-content ol,
+  .entry-content p.has-text-align-center,
+  .entry-content .paragraph-like.has-text-align-center,
+  .widget-area p,
+  .widget-area .paragraph-like,
+  .widget-area ul,
+  .widget-area ol,
+  .widget-area p.has-text-align-center,
+  .widget-area .paragraph-like.has-text-align-center {
+    margin-left: auto;
+    margin-right: auto; }
+  .entry-content p.has-text-align-right,
+  .entry-content .paragraph-like.has-text-align-right,
+  .widget-area p.has-text-align-right,
+  .widget-area .paragraph-like.has-text-align-right {
+    margin-left: auto;
+    margin-right: 0; }
 
 .singular .entry-content > p:first-child,
 .singular .widget-area > p:first-child {
@@ -542,14 +554,23 @@ textarea {
 .site-header {
   order: 10;
   background-color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 10; }
-  body.admin-bar .site-header {
-    top: 46px; }
-    @media (min-width: 783px) {
-      body.admin-bar .site-header {
-        top: 32px; } }
+  position: relative;
+  z-index: 10;
+  /*
+    
+    position: sticky;
+    top: 0;
+    
+    
+    body.admin-bar & {
+
+        top: 46px;
+        @media (min-width : 783px){
+            top: 32px;
+        }
+    }
+
+    */ }
   .site-header__inner {
     display: flex; }
 
@@ -582,6 +603,8 @@ textarea {
     text-align: right; }
 
 .site-header__branding {
+  position: relative;
+  z-index: 2;
   padding: 10px; }
 
 .site-main {
@@ -726,27 +749,117 @@ h1.page-title {
 .site-header__main-navigation li {
   position: relative; }
 
-.site-header__main-navigation .sub-menu {
-  position: absolute;
-  overflow: hidden;
-  min-width: 100%;
-  opacity: 0;
-  max-height: 0;
-  background-color: #fff;
-  padding-left: 0;
-  margin-left: 0;
-  list-style: none;
-  text-align: left; }
-  .site-header__main-navigation .sub-menu a {
-    width: 100%; }
-
-.site-header__main-navigation li:hover > .sub-menu {
-  opacity: 1;
-  max-height: 50vh; }
-
 .footer-navigation a {
   display: inline-block;
   padding: 10px; }
+
+/******/
+.lazy-main-navigation {
+  /**
+
+	Vergan burger
+
+
+	**/ }
+  @media (max-width: 959px) {
+    .lazy-main-navigation {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      left: 0;
+      top: 100%;
+      background-color: #fff; } }
+  .lazy-main-navigation .site-header__main-navigation-toggle {
+    position: absolute;
+    z-index: 3;
+    right: 20px;
+    bottom: 100%;
+    bottom: calc( 100% + 1.1em);
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px #ddd; }
+    @media (min-width: 960px) {
+      .lazy-main-navigation .site-header__main-navigation-toggle {
+        display: none; } }
+    .lazy-main-navigation .site-header__main-navigation-toggle .menu-label {
+      vertical-align: middle;
+      margin-right: 8px;
+      text-transform: uppercase; }
+  .lazy-main-navigation .sub-menu {
+    background-color: #fff;
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+    text-align: left; }
+  @media (min-width: 960px) {
+    .lazy-main-navigation .sub-menu {
+      position: absolute;
+      overflow: hidden;
+      min-width: 100%;
+      opacity: 0;
+      max-height: 0; }
+      .lazy-main-navigation .sub-menu a {
+        width: 100%; }
+    .lazy-main-navigation li:hover > .sub-menu {
+      opacity: 1;
+      max-height: 50vh; } }
+  @media (max-width: 959px) {
+    .lazy-main-navigation .menu {
+      text-align: left;
+      padding-top: 0;
+      position: absolute;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: all .3s;
+      box-shadow: 0 0 0 2px #eee;
+      background-color: #fff; }
+      .lazy-main-navigation .menu a {
+        padding-left: 20px;
+        padding-right: 20px; } }
+  @media (max-width: 959px) {
+    .lazy-main-navigation--open .menu {
+      padding-top: 30px;
+      max-height: 1000px; } }
+  .lazy-main-navigation .veganburger {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; }
+  .lazy-main-navigation .veganburger span {
+    background: #333;
+    height: 3px;
+    width: 25px;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 0.3s ease-out 0.07s;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px; }
+  .lazy-main-navigation .veganburger .pain {
+    top: 0px; }
+  .lazy-main-navigation .veganburger .ketchup {
+    top: calc( 25px / 2 - 3px / 2); }
+  .lazy-main-navigation .veganburger .tempeh {
+    top: calc( 25px - 3px); }
+  .lazy-main-navigation--open .veganburger span {
+    background: #333; }
+  .lazy-main-navigation--open .veganburger .pain {
+    top: calc( 25px / 2 - 3px / 2);
+    transform: translateX(-50%) rotate(135deg); }
+  .lazy-main-navigation--open .veganburger .ketchup {
+    width: 0; }
+  .lazy-main-navigation--open .veganburger .tempeh {
+    top: calc( 25px / 2 - 3px / 2);
+    transform: translateX(-50%) rotate(-135deg); }
+  .lazy-main-navigation--open .veganburger span {
+    box-shadow: none; }
 
 /*
 
@@ -872,7 +985,8 @@ ul.menu, ol.menu {
   padding-left: 0;
   margin: 0 auto;
   list-style: none;
-  display: flex; }
+  display: flex;
+  flex-grow: 1; }
 
 /* Posts and pages
 --------------------------------------------- */
@@ -1079,7 +1193,13 @@ ul.menu, ol.menu {
   left: 50%;
   width: 100vw;
   max-width: 100vw;
-  margin-left: calc( -1 * ( 100vw / 2 )); }
+  margin-left: calc( -1 * ( 100vw / 2));
+  margin-right: calc( -1 * ( 100vw  / 2)); }
+  @media (min-width: 1160px) {
+    .hentry:not(.post--has-sidebar) .alignfull {
+      left: 0;
+      margin-left: calc( -1 * ( ( 100vw - 1160px ) / 2));
+      margin-right: calc( -1 * ( ( 100vw - 1160px ) / 2)); } }
 
 /*--------------------------------------------------------------
 # Blocs

@@ -10,9 +10,28 @@
 
 	/**
 	 * 
+	 * 
+	 * 
+	 */
+	
+	$( '.site-header__main-navigation-toggle' ).on( 'click', function(e){
+
+		e.preventDefault();
+		$( '.site-header__main-navigation.lazy-main-navigation' ).toggleClass( 'lazy-main-navigation--open' );
+
+	});
+
+
+
+
+	/**
+	 * 
 	 * Sticky header
 	 * 
 	 */
+
+	/*
+
 
 	if( $('.site-header').hasClass('site-header--fixed') ){
 	
@@ -69,6 +88,9 @@
 		// - end / Resize event
 
 	}
+
+
+	*/
 
 
 }( jQuery ) );

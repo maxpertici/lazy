@@ -18,17 +18,27 @@
     order: 10;
     background-color: #fff;
 
+    position: relative;
+    z-index: 10;
+
+    
+    /*
+    
     position: sticky;
     top: 0;
-    z-index: 10;
+    
     
     body.admin-bar & {
+
         top: 46px;
         @media (min-width : 783px){
             top: 32px;
         }
     }
 
+    */
+    
+    
     &__inner{
         display: flex;
         
@@ -79,6 +89,8 @@
 
 
 .site-header__branding{
+    position: relative;
+    z-index: 2;
     padding: 10px;
 }
 

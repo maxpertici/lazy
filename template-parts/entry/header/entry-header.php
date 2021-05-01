@@ -1,4 +1,4 @@
-<header class="entry-header alignfull">
+<header class="entry-header">
     <div class="mw1160p center">
     <?php
 

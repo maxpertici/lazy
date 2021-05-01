@@ -14,35 +14,6 @@
 }
 
 
-.site-header__main-navigation{
-
-	.sub-menu{
-		position: absolute;
-		overflow: hidden;
-		min-width: 100%;
-
-		opacity: 0;
-		max-height: 0;
-
-		background-color: #fff;
-		padding-left: 0;
-		margin-left: 0;
-
-		list-style: none;
-
-		text-align: left;
-		
-		a{ width: 100%; }
-	}
-
-	li:hover > .sub-menu{
-		opacity: 1;
-		max-height: 50vh;
-	}
-
-}
-
-
 .footer-navigation{
 	
 	a{
@@ -51,6 +22,197 @@
 
 	}
 }
+
+
+
+/******/
+
+
+.lazy-main-navigation{
+	
+	@media( max-width : 959px ){
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		left: 0;
+		top: 100%;
+
+		background-color: #fff;
+	}
+
+
+	.site-header__main-navigation-toggle{
+
+		position: absolute;
+		z-index: 3;
+		
+		right: 20px;
+		bottom: 100%;
+		bottom: calc( 100% + 1.1em );
+		
+		appearance: none;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+
+		box-shadow: 0 0 0 2px #ddd;
+
+		@media( min-width:960px ){
+			display: none;
+
+		}
+
+		.menu-label{
+			vertical-align: middle;
+			margin-right: 8px;
+			text-transform: uppercase;
+		}
+
+	}
+
+	.sub-menu{
+		background-color: #fff;
+		padding-left: 0;
+		margin-left: 0;
+
+		list-style: none;
+		text-align: left;
+	
+	}
+	@media( min-width : 960px ){
+		
+		.sub-menu{
+			
+			position: absolute;
+			overflow: hidden;
+
+			min-width: 100%;
+			opacity: 0;
+			max-height: 0;
+			
+			a{ width: 100%; }
+
+		
+		}
+
+		li:hover > .sub-menu{
+			opacity: 1;
+			max-height: 50vh;
+		}
+	}
+	
+	.menu{
+
+		@media( max-width : 959px ){
+
+			text-align: left;
+			padding-top: 0;
+
+			position: absolute;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			width: 100%;
+
+			max-height: 0;
+			overflow: hidden;
+			transition : all .3s;
+
+			box-shadow: 0 0 0 2px #eee;
+			background-color: #fff;
+
+			a{
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
+
+	}
+
+	&--open .menu{
+
+		@media( max-width : 959px ){
+			padding-top: 30px;
+			max-height: 1000px;
+		}
+	}
+
+
+
+	/**
+
+	Vergan burger
+
+
+	**/
+	
+
+	.veganburger{
+
+		width: 25px;
+		height: 25px;
+		position: relative;
+		display: inline-block;
+
+		vertical-align: middle;
+
+	}
+
+	.veganburger span {
+		background: #333;
+		height: 3px;
+		width: 25px;
+		position: absolute;
+		display: block;
+		content: '';
+		
+		transition: all 0.3s ease-out 0.07s;
+
+		left: 50%;
+		transform: translateX(-50%);
+		border-radius: 25px;
+
+	}
+
+	.veganburger .pain{
+		top: 0px;
+	}
+	.veganburger .ketchup {
+		top: calc( 25px / 2 - 3px / 2);
+	}
+	.veganburger .tempeh {
+		top: calc( 25px - 3px );
+	}
+
+
+	
+	
+	&--open .veganburger span{
+			background: #333;
+		}
+
+		&--open .veganburger .pain{
+			top: calc( 25px / 2 - 3px / 2);
+			transform: translateX(-50%) rotate(135deg);
+		}
+
+		&--open .veganburger .ketchup {
+			width: 0;
+		}
+
+
+		&--open .veganburger .tempeh {
+			top: calc( 25px / 2 - 3px / 2);
+			transform: translateX(-50%) rotate(-135deg);
+		}
+
+		&--open .veganburger span{
+			box-shadow: none;	
+		}
+
+}
+
+
+
 
 
 
@@ -181,10 +343,11 @@
 }
 
 
-ul.menu,ol.menu{
+ul.menu, ol.menu{
 
 	padding-left: 0;
 	margin: 0 auto;
 	list-style: none;
 	display: flex;
+	flex-grow: 1;
 }
